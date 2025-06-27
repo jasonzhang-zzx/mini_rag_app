@@ -1,0 +1,9 @@
+chroma/
+.vscode/
+__pycache__/
+*.pyc
+*.pyo
+*.pydb
+*.DS_Store
+*.env
+literatures/
