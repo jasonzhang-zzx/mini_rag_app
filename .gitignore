@@ -6,4 +6,5 @@ __pycache__/
 *.pydb
 *.DS_Store
 *.env
-literatures/
+literatures/*
+!literatures/.gitkeep

@@ -39,11 +39,8 @@ if __name__ == "__main__":
 
     chunks = split_text(paragaphs)
 
-    vec_db = MyVectorDBConnector("thesis", embedding_function=get_embedding)
+    vec_db = MyVectorDBConnector("defult", embedding_function=get_embedding)
     vec_db.add_documents(chunks)
+    print("A new vector database is created.")
 
-    user_query = "What are the characteristics of cardiac amyloidosis?"
-    results = vec_db.search(user_query, top_k=3)
-    for para in results["documents"][0]:
-        print(para+"\n")
 

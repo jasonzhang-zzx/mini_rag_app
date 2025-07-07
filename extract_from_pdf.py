@@ -59,24 +59,24 @@ def split_text(paragraphs, chunk_size=1800, overlap_size=300):
 
 def process_pdfs_to_json(pdf_paths, output_dir, chunk_size=1800, overlap=300, max_chunks_per_file=500):
     """
-    核心处理函数
-    :param pdf_paths: PDF文件路径列表
-    :param output_dir: 输出目录
-    :param chunk_size: 块大小
-    :param overlap: 重叠大小
-    :param max_chunks_per_file: 单个JSON最大块数
+    core processing function
+    :param pdf_paths: path to the input pdf file
+    :param output_dir: output directory
+    :param chunk_size: size of each chunk
+    :param overlap: overlap size
+    :param max_chunks_per_file: maximum number of chunks per json file
     """
     max_data = []
     os.makedirs(output_dir, exist_ok=True)
     num_json = 0
     for pdf_path in pdf_paths:
-        # 获取基础信息
+        # obtain basic info
         pdf_name = os.path.basename(pdf_path)
         print(f"Processing {pdf_name}...")
         
-        # 提取文本和页码
+        # extract text and page numbers
         paragraphs = extract_text_from_pdf(pdf_path)
-        # 分割文本块
+        # split text into chunks
         chunks = split_text(paragraphs, chunk_size, overlap)
 
         for idx, chunk in enumerate(chunks):
@@ -93,7 +93,7 @@ def process_pdfs_to_json(pdf_paths, output_dir, chunk_size=1800, overlap=300, ma
                 max_data = []
                 num_json += 1
         
-        # 保存剩余的块到新的JSON文件中
+        # save the remaining chunks to a new json file
         if max_data:
             filename = f"chunks_part_{num_json + 1}.json"
             output_path = os.path.join(output_dir, filename)

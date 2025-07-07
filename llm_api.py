@@ -24,18 +24,18 @@ def get_completion(prompt, model="deepseek-r1:latest"):
         raise Exception(f"请求失败: {response.text}")
 
 prompt_template = """
-你是一个问答机器人。
-你的任务是根据下述给定的已知信息回答用户的问题。
+You are a question-answering chatbot.
+Your task is to answer the user's question based on the following provided information.
 
-已知信息：
+Known information:
 {context}
 
-用户问：
+User's question:
 {question}
 
-如果已知信息不包含用户问题的答案，或已知信息不足以回答用户的问题，请直接回复“抱歉，我无法回答这个问题”。
-请不要输出已知信息中不包含的信息或答案。
-请用中文回答用户的问题。
+If the known information does not contain the answer to the user's question, or if the information is insufficient to answer it, please reply directly with "Sorry, I cannot answer this question."
+Do not provide any information or answers that are not included in the known information.
+Please answer the user's question in English.
 """
 
 

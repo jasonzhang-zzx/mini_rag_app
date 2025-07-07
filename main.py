@@ -23,14 +23,14 @@ class RAG_bot:
         return response
 
 if __name__ == "__main__":
-    print("欢迎使用 RAG chatbot！输入 'exit' 退出")
-    vec_db = MyVectorDBConnector("thesis", embedding_function=get_embedding)
+    print("You are chatting with a RAG chatbot! Input 'quit' or 'exit' to end the chat. \n")
+    vec_db = MyVectorDBConnector("defualt", embedding_function=get_embedding)
     bot = RAG_bot(vector_db=vec_db, llm_api=get_completion)
 
     while True:
-        user_query = input("你：")
+        user_query = input("You: ")
         if user_query.lower() in ['exit', 'quit']:
-            print("再见！")
+            print("Bye! ")
             break
         response = bot.chat(user_query)
-        print(f"Bot：{response}\n")
+        print(f"Bot: {response}\n")
